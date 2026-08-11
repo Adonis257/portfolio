@@ -1,0 +1,2053 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <meta name="description"
+          content="Portfolio de MUNEZERO Patrick Adonis – Développeur Full Stack spécialisé en PHP, Python, Django, JavaScript, React Native, Node.js, API REST et bases de données.">
+
+    <meta name="author" content="MUNEZERO Patrick Adonis">
+
+    <title>MUNEZERO Patrick Adonis · Full Stack Developer</title>
+
+    <link rel="icon"
+          type="image/svg+xml"
+          href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600&display=swap"
+          rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-light: #f8fafc;
+            --surface-light: #ffffff;
+            --text-light: #0f172a;
+            --text-secondary-light: #475569;
+
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --secondary: #8b5cf6;
+
+            --gradient: linear-gradient(135deg, #2563eb, #8b5cf6);
+
+            --border-light: #e2e8f0;
+
+            --bg-dark: #080b16;
+            --surface-dark: #111827;
+            --text-dark: #f1f5f9;
+            --text-secondary-dark: #cbd5e1;
+
+            --border-dark: #1e293b;
+
+            --radius: 1.4rem;
+
+            --shadow-light:
+                0 10px 25px -5px rgba(0,0,0,.06),
+                0 8px 10px -6px rgba(0,0,0,.03);
+
+            --shadow-dark:
+                0 10px 25px -5px rgba(0,0,0,.35),
+                0 8px 10px -6px rgba(0,0,0,.2);
+
+            --transition: all .25s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-light);
+            color: var(--text-light);
+            font-family: "Inter", sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: var(--transition);
+        }
+
+        body.dark {
+            background: var(--bg-dark);
+            color: var(--text-dark);
+        }
+
+        /* =========================
+           SCROLLBAR
+        ========================= */
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 20px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0,0,0,.05);
+        }
+
+        /* =========================
+           ANIMATIONS
+        ========================= */
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section,
+        header {
+            animation: fadeUp .6s ease-out;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            position: sticky;
+            top: 1rem;
+            z-index: 1000;
+
+            width: 92%;
+            max-width: 1250px;
+
+            margin: 0 auto;
+
+            padding: .5rem 1.5rem;
+
+            border-radius: 50px;
+
+            background: rgba(255,255,255,.82);
+            backdrop-filter: blur(18px);
+
+            border: 1px solid rgba(255,255,255,.5);
+
+            box-shadow: 0 5px 20px rgba(0,0,0,.05);
+        }
+
+        body.dark nav {
+            background: rgba(15,23,42,.9);
+            border-color: rgba(255,255,255,.08);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.1rem;
+
+            list-style: none;
+        }
+
+        nav a {
+            color: inherit;
+            text-decoration: none;
+
+            font-size: .9rem;
+            font-weight: 600;
+
+            padding: .5rem .2rem;
+
+            position: relative;
+            transition: var(--transition);
+        }
+
+        nav a::after {
+            content: "";
+
+            position: absolute;
+            left: 0;
+            bottom: 0;
+
+            width: 0;
+            height: 2px;
+
+            background: var(--primary);
+
+            transition: width .25s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        #theme-toggle,
+        #lang-toggle-btn {
+            border: none;
+
+            background: rgba(0,0,0,.06);
+
+            color: inherit;
+
+            padding: .45rem .9rem;
+
+            border-radius: 30px;
+
+            cursor: pointer;
+
+            font-weight: 700;
+
+            transition: var(--transition);
+        }
+
+        #theme-toggle:hover,
+        #lang-toggle-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            text-align: center;
+            padding: 4rem 1.5rem 3rem;
+        }
+
+        .profile {
+            width: 150px;
+            height: 150px;
+
+            margin: auto;
+
+            border-radius: 50%;
+
+            overflow: hidden;
+
+            border: 4px solid white;
+
+            background: var(--gradient);
+
+            box-shadow: 0 15px 40px rgba(37,99,235,.2);
+
+            transition: transform .3s ease;
+        }
+
+        .profile:hover {
+            transform: scale(1.04);
+        }
+
+        .profile img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+        h1 {
+            margin-top: 1.5rem;
+
+            font-size: clamp(2rem,6vw,3.5rem);
+
+            font-weight: 800;
+
+            letter-spacing: -.03em;
+
+            background: linear-gradient(
+                135deg,
+                #1e293b,
+                #2563eb,
+                #8b5cf6
+            );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            color: transparent;
+        }
+
+        body.dark h1 {
+            background: linear-gradient(
+                135deg,
+                #e2e8f0,
+                #60a5fa,
+                #c084fc
+            );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .subtitle {
+            margin: .7rem auto 1.5rem;
+
+            max-width: 850px;
+
+            color: var(--text-secondary-light);
+
+            font-size: 1.15rem;
+
+            font-weight: 500;
+        }
+
+        body.dark .subtitle {
+            color: var(--text-secondary-dark);
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: .6rem;
+
+            padding: .75rem 1.5rem;
+
+            border-radius: 50px;
+
+            background: var(--gradient);
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+            transition: var(--transition);
+
+            box-shadow: 0 8px 20px rgba(37,99,235,.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(37,99,235,.25);
+        }
+
+        .social-links-header {
+            display: flex;
+            justify-content: center;
+            gap: .8rem;
+
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: rgba(0,0,0,.05);
+
+            color: var(--text-secondary-light);
+
+            text-decoration: none;
+
+            font-size: 1.2rem;
+
+            transition: var(--transition);
+        }
+
+        body.dark .social-icon {
+            background: rgba(255,255,255,.08);
+            color: var(--text-secondary-dark);
+        }
+
+        .social-icon:hover {
+            background: var(--primary);
+            color: white;
+
+            transform: translateY(-4px);
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        section {
+            max-width: 1200px;
+
+            margin: 2rem auto;
+
+            padding: 2rem;
+
+            background: var(--surface-light);
+
+            border: 1px solid var(--border-light);
+
+            border-radius: var(--radius);
+
+            box-shadow: var(--shadow-light);
+
+            scroll-margin-top: 6rem;
+        }
+
+        body.dark section {
+            background: var(--surface-dark);
+            border-color: var(--border-dark);
+            box-shadow: var(--shadow-dark);
+        }
+
+        h2 {
+            display: flex;
+            align-items: center;
+            gap: .7rem;
+
+            margin-bottom: 1.5rem;
+
+            font-size: clamp(1.5rem,4vw,2rem);
+
+            background: linear-gradient(
+                120deg,
+                var(--primary),
+                var(--secondary)
+            );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            color: transparent;
+        }
+
+        .card {
+            background: var(--bg-light);
+
+            padding: 1.4rem;
+
+            border-radius: 1.2rem;
+
+            margin-bottom: 1rem;
+        }
+
+        body.dark .card {
+            background: #0f172a;
+            border: 1px solid #1e293b;
+        }
+
+        /* =========================
+           SKILLS
+        ========================= */
+
+        .skill-group {
+            margin-bottom: 2rem;
+        }
+
+        .skill-group h3 {
+            margin-bottom: 1rem;
+
+            color: var(--primary);
+
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+        }
+
+        .skill {
+            margin: 1rem 0;
+        }
+
+        .skill p {
+            display: flex;
+            justify-content: space-between;
+
+            margin-bottom: .4rem;
+
+            font-weight: 600;
+        }
+
+        .bar {
+            height: 9px;
+
+            background: #e2e8f0;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+        }
+
+        body.dark .bar {
+            background: #1e293b;
+        }
+
+        .bar span {
+            display: block;
+
+            height: 100%;
+
+            width: 0;
+
+            background: var(--gradient);
+
+            border-radius: 20px;
+
+            transition: width 1.2s ease;
+        }
+
+        .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .6rem;
+        }
+
+        .badge {
+            padding: .35rem .9rem;
+
+            border-radius: 50px;
+
+            background: #eef2ff;
+
+            color: #1e293b;
+
+            font-size: .82rem;
+
+            font-weight: 600;
+        }
+
+        body.dark .badge {
+            background: #1e2a3e;
+            color: #e2e8f0;
+        }
+
+        /* =========================
+           PROJECTS
+        ========================= */
+
+        .projects {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit,minmax(280px,1fr));
+
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+
+            padding: 1.4rem;
+
+            background: var(--bg-light);
+
+            border: 1px solid var(--border-light);
+
+            border-radius: 1.2rem;
+
+            transition: var(--transition);
+        }
+
+        body.dark .project-card {
+            background: #0f172a;
+            border-color: #1e293b;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+
+            border-color: var(--primary);
+
+            box-shadow: 0 20px 30px rgba(0,0,0,.1);
+        }
+
+        .project-card h3 {
+            margin-bottom: .6rem;
+
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+        }
+
+        .project-card p {
+            font-size: .9rem;
+            opacity: .85;
+            margin-bottom: 1rem;
+        }
+
+        .lang-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .4rem;
+
+            margin-bottom: 1rem;
+        }
+
+        .lang-badge {
+            padding: .25rem .65rem;
+
+            border-radius: 20px;
+
+            background: rgba(59,130,246,.12);
+
+            color: var(--primary);
+
+            font-size: .72rem;
+
+            font-weight: 700;
+        }
+
+        .project-card a {
+            margin-top: auto;
+
+            color: var(--primary);
+
+            font-weight: 700;
+
+            text-decoration: none;
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact-form {
+            padding: 1.5rem;
+
+            background: var(--bg-light);
+
+            border-radius: 1.3rem;
+        }
+
+        body.dark .contact-form {
+            background: #0f172a;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+
+            margin-bottom: .4rem;
+
+            font-weight: 700;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+
+            padding: .85rem 1rem;
+
+            border: 1px solid var(--border-light);
+
+            border-radius: 1rem;
+
+            background: white;
+
+            color: var(--text-light);
+
+            font-family: inherit;
+
+            font-size: .95rem;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        body.dark .form-group input,
+        body.dark .form-group textarea {
+            background: #1e293b;
+            border-color: #334155;
+            color: white;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+
+            border-color: var(--primary);
+
+            box-shadow: 0 0 0 3px rgba(37,99,235,.15);
+        }
+
+        .btn-submit {
+            width: 100%;
+
+            border: none;
+
+            padding: .9rem;
+
+            border-radius: 50px;
+
+            background: var(--gradient);
+
+            color: white;
+
+            font-size: 1rem;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: var(--transition);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+        }
+
+        .form-message {
+            margin-top: 1rem;
+
+            text-align: center;
+
+            font-weight: 600;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            text-align: center;
+
+            padding: 2.5rem 1rem;
+
+            opacity: .7;
+
+            font-size: .85rem;
+        }
+
+        /* =========================
+           BACK TO TOP
+        ========================= */
+
+        #back2top {
+            position: fixed;
+
+            right: 1.5rem;
+            bottom: 1.5rem;
+
+            width: 45px;
+            height: 45px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: var(--gradient);
+
+            color: white;
+
+            cursor: pointer;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition: .2s;
+
+            z-index: 999;
+        }
+
+        #back2top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media(max-width:768px) {
+
+            nav {
+                width: 95%;
+                padding: .4rem .8rem;
+            }
+
+            nav ul {
+                gap: .5rem;
+            }
+
+            nav a {
+                font-size: .78rem;
+            }
+
+            section {
+                margin: 1.2rem 1rem;
+                padding: 1.3rem;
+            }
+
+            .profile {
+                width: 115px;
+                height: 115px;
+            }
+
+            header {
+                padding-top: 3rem;
+            }
+        }
+
+        @media(max-width:480px) {
+
+            nav ul {
+                gap: .35rem;
+            }
+
+            nav a {
+                font-size: .72rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        @media print {
+
+            nav,
+            #back2top,
+            .buttons,
+            .social-links-header,
+            .contact-form {
+                display: none;
+            }
+
+            body {
+                background: white;
+                color: black;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav>
+    <ul>
+
+        <li>
+            <a href="#about"
+               data-fr="À propos"
+               data-en="About">
+                À propos
+            </a>
+        </li>
+
+        <li>
+            <a href="#identity"
+               data-fr="Identité"
+               data-en="Identity">
+                Identité
+            </a>
+        </li>
+
+        <li>
+            <a href="#skills"
+               data-fr="Compétences"
+               data-en="Skills">
+                Compétences
+            </a>
+        </li>
+
+        <li>
+            <a href="#experience"
+               data-fr="Expérience"
+               data-en="Experience">
+                Expérience
+            </a>
+        </li>
+
+        <li>
+            <a href="#projects"
+               data-fr="Projets"
+               data-en="Projects">
+                Projets
+            </a>
+        </li>
+
+        <li>
+            <a href="#contact"
+               data-fr="Contact"
+               data-en="Contact">
+                Contact
+            </a>
+        </li>
+
+        <li>
+            <button id="theme-toggle"
+                    aria-label="Changer le thème">
+                <i class="fas fa-moon"></i>
+            </button>
+        </li>
+
+        <li>
+            <button id="lang-toggle-btn">
+                EN
+            </button>
+        </li>
+
+    </ul>
+</nav>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="profile">
+
+        <img
+            id="profile-img"
+            src="images/profile.jpg"
+            alt="MUNEZERO Patrick Adonis"
+            onerror="this.onerror=null;this.src='https://github.com/adonis123.png';">
+
+    </div>
+
+    <h1>MUNEZERO Patrick Adonis</h1>
+
+    <p class="subtitle"
+       data-fr="Développeur Full Stack · PHP · Python · Django · JavaScript · React Native · Node.js · API REST · Bases de données"
+       data-en="Full Stack Developer · PHP · Python · Django · JavaScript · React Native · Node.js · REST APIs · Databases">
+
+        Développeur Full Stack · PHP · Python · Django · JavaScript · React Native · Node.js · API REST · Bases de données
+
+    </p>
+
+
+    <div class="buttons">
+
+        <a
+            href="https://github.com/adonis123"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn">
+
+            <i class="fab fa-github"></i>
+
+            GitHub
+
+        </a>
+
+
+        <a
+            href="mailto:patrickmunezero12@gmail.com"
+            class="btn">
+
+            <i class="fas fa-envelope"></i>
+
+            <span
+                data-fr="Me contacter"
+                data-en="Contact me">
+                Me contacter
+            </span>
+
+        </a>
+
+    </div>
+
+
+    <div class="social-links-header">
+
+        <a
+            href="https://github.com/adonis123"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-icon"
+            aria-label="GitHub">
+
+            <i class="fab fa-github"></i>
+
+        </a>
+
+
+        <a
+            href="https://wa.me/25777853044"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-icon"
+            aria-label="WhatsApp">
+
+            <i class="fab fa-whatsapp"></i>
+
+        </a>
+
+
+        <a
+            href="mailto:patrickmunezero12@gmail.com"
+            class="social-icon"
+            aria-label="Email">
+
+            <i class="fas fa-envelope"></i>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section id="about">
+
+    <h2>
+
+        <i class="fas fa-user-astronaut"></i>
+
+        <span
+            data-fr="Profil professionnel"
+            data-en="Professional Profile">
+
+            Profil professionnel
+
+        </span>
+
+    </h2>
+
+
+    <p
+        data-fr="Je suis MUNEZERO Patrick Adonis, diplômé en TIC (Option Informatique) à l'Université du Burundi. Je suis développeur Full Stack passionné par la conception d'applications web et mobiles modernes. Je travaille avec PHP, Python, Django, JavaScript, Node.js et React Native. Je possède également des compétences en bases de données, conception d'API REST, Git, Docker et déploiement d'applications. Mon objectif est de concevoir des solutions fiables, performantes et faciles à maintenir."
+
+        data-en="I am MUNEZERO Patrick Adonis, an ICT graduate in Computer Science from the University of Burundi. I am a Full Stack Developer passionate about building modern web and mobile applications. I work with PHP, Python, Django, JavaScript, Node.js and React Native. I also have experience with databases, REST API development, Git, Docker and application deployment. My goal is to build reliable, scalable and maintainable software solutions.">
+
+        Je suis MUNEZERO Patrick Adonis, diplômé en TIC (Option Informatique) à l'Université du Burundi. Je suis développeur Full Stack passionné par la conception d'applications web et mobiles modernes. Je travaille avec PHP, Python, Django, JavaScript, Node.js et React Native. Je possède également des compétences en bases de données, conception d'API REST, Git, Docker et déploiement d'applications. Mon objectif est de concevoir des solutions fiables, performantes et faciles à maintenir.
+
+    </p>
+
+</section>
+
+
+<!-- =========================
+     IDENTITY
+========================= -->
+
+<section id="identity">
+
+    <h2>
+
+        <i class="fas fa-id-card"></i>
+
+        <span
+            data-fr="Informations personnelles"
+            data-en="Personal Information">
+
+            Informations personnelles
+
+        </span>
+
+    </h2>
+
+
+    <div class="card">
+
+        <p>
+            <i class="fas fa-user"></i>
+
+            <strong>Nom complet :</strong>
+            MUNEZERO Patrick Adonis
+        </p>
+
+        <p>
+            <i class="fas fa-calendar-alt"></i>
+
+            <strong>Année de naissance :</strong>
+            2004
+        </p>
+
+        <p>
+            <i class="fas fa-map-marker-alt"></i>
+
+            <strong>Ville :</strong>
+            Bujumbura, Burundi
+        </p>
+
+        <p>
+            <i class="fas fa-phone"></i>
+
+            <strong>Téléphone :</strong>
+            +257 77 85 30 44
+        </p>
+
+        <p>
+            <i class="fas fa-envelope"></i>
+
+            <strong>Email :</strong>
+
+            <a href="mailto:patrickmunezero12@gmail.com">
+                patrickmunezero12@gmail.com
+            </a>
+
+        </p>
+
+        <p>
+            <i class="fab fa-github"></i>
+
+            <strong>GitHub :</strong>
+
+            <a
+                href="https://github.com/adonis123"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                github.com/adonis123
+
+            </a>
+
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <p>
+
+            <i class="fas fa-language"></i>
+
+            <strong
+                data-fr="Langues"
+                data-en="Languages">
+
+                Langues
+
+            </strong>
+
+            :
+
+            Kirundi · Français courant · Anglais technique · Kiswahili
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SKILLS
+========================= -->
+
+<section id="skills">
+
+    <h2>
+
+        <i class="fas fa-cogs"></i>
+
+        <span
+            data-fr="Compétences techniques"
+            data-en="Technical Skills">
+
+            Compétences techniques
+
+        </span>
+
+    </h2>
+
+
+    <div class="skill-group">
+
+        <h3>
+            <i class="fas fa-code"></i>
+            Langages & développement
+        </h3>
+
+
+        <div class="skill">
+
+            <p>
+                HTML / CSS / JavaScript
+                <span>90%</span>
+            </p>
+
+            <div class="bar">
+                <span data-width="90%"></span>
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <p>
+                PHP
+                <span>80%</span>
+            </p>
+
+            <div class="bar">
+                <span data-width="80%"></span>
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <p>
+                Python
+                <span>70%</span>
+            </p>
+
+            <div class="bar">
+                <span data-width="70%"></span>
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <p>
+                Node.js
+                <span>65%</span>
+            </p>
+
+            <div class="bar">
+                <span data-width="65%"></span>
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <p>
+                React Native
+                <span>60%</span>
+            </p>
+
+            <div class="bar">
+                <span data-width="60%"></span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="skill-group">
+
+        <h3>
+            <i class="fas fa-layer-group"></i>
+            Frameworks & CMS
+        </h3>
+
+        <div class="badge-list">
+
+            <span class="badge">Django</span>
+            <span class="badge">Django REST Framework</span>
+            <span class="badge">WordPress</span>
+            <span class="badge">WooCommerce</span>
+            <span class="badge">PrestaShop</span>
+            <span class="badge">CodeIgniter</span>
+            <span class="badge">Bootstrap</span>
+            <span class="badge">Tailwind CSS</span>
+
+        </div>
+
+    </div>
+
+
+    <div class="skill-group">
+
+        <h3>
+            <i class="fas fa-database"></i>
+            Bases de données
+        </h3>
+
+        <div class="badge-list">
+
+            <span class="badge">MySQL</span>
+            <span class="badge">SQL Server</span>
+            <span class="badge">Oracle</span>
+            <span class="badge">SQL</span>
+            <span class="badge">Database Design</span>
+
+        </div>
+
+    </div>
+
+
+    <div class="skill-group">
+
+        <h3>
+            <i class="fas fa-server"></i>
+            API & DevOps
+        </h3>
+
+        <div class="badge-list">
+
+            <span class="badge">REST API</span>
+            <span class="badge">JWT</span>
+            <span class="badge">OAuth</span>
+            <span class="badge">Git</span>
+            <span class="badge">GitHub</span>
+            <span class="badge">Docker</span>
+            <span class="badge">Postman</span>
+            <span class="badge">CI/CD</span>
+            <span class="badge">Nginx</span>
+            <span class="badge">Apache</span>
+
+        </div>
+
+    </div>
+
+
+    <div class="skill-group">
+
+        <h3>
+            <i class="fas fa-toolbox"></i>
+            Outils
+        </h3>
+
+        <div class="badge-list">
+
+            <span class="badge">VS Code</span>
+            <span class="badge">GitHub</span>
+            <span class="badge">Postman</span>
+            <span class="badge">Docker</span>
+            <span class="badge">Linux</span>
+            <span class="badge">Jupyter Notebook</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     EXPERIENCE
+========================= -->
+
+<section id="experience">
+
+    <h2>
+
+        <i class="fas fa-briefcase"></i>
+
+        <span
+            data-fr="Expérience professionnelle"
+            data-en="Professional Experience">
+
+            Expérience professionnelle
+
+        </span>
+
+    </h2>
+
+
+    <div class="card">
+
+        <h3>
+
+            <i class="fas fa-building"></i>
+
+            Office Burundais des Recettes (OBR)
+
+        </h3>
+
+        <p>
+            <strong>Stage – Informatique / Développement</strong>
+        </p>
+
+        <br>
+
+        <p>
+            Participation au développement d'outils internes,
+            à la gestion des bases de données, aux sauvegardes,
+            à la documentation technique et au support informatique.
+        </p>
+
+        <br>
+
+        <ul>
+
+            <li>
+                Développement et amélioration d'applications internes.
+            </li>
+
+            <li>
+                Travail avec les bases de données et requêtes SQL.
+            </li>
+
+            <li>
+                Gestion et vérification des sauvegardes.
+            </li>
+
+            <li>
+                Assistance et support aux utilisateurs.
+            </li>
+
+            <li>
+                Documentation des procédures techniques.
+            </li>
+
+        </ul>
+
+    </div>
+
+
+    <div class="card">
+
+        <h3>
+
+            <i class="fas fa-laptop-code"></i>
+
+            Freelance & projets personnels
+
+        </h3>
+
+        <br>
+
+        <ul>
+
+            <li>
+                Développement de sites web avec WordPress et WooCommerce.
+            </li>
+
+            <li>
+                Développement d'API REST avec Django REST Framework.
+            </li>
+
+            <li>
+                Développement d'applications mobiles avec React Native.
+            </li>
+
+            <li>
+                Création d'applications Full Stack avec PHP et JavaScript.
+            </li>
+
+            <li>
+                Gestion de bases de données MySQL et SQL.
+            </li>
+
+            <li>
+                Utilisation de Git et GitHub pour la gestion du code source.
+            </li>
+
+        </ul>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PROJECTS
+========================= -->
+
+<section id="projects">
+
+    <h2>
+
+        <i class="fas fa-code-branch"></i>
+
+        <span
+            data-fr="Projets GitHub"
+            data-en="GitHub Projects">
+
+            Projets GitHub
+
+        </span>
+
+    </h2>
+
+
+    <p style="margin-bottom:1.5rem; opacity:.8;">
+
+        Découvrez mes projets et réalisations directement sur mon profil GitHub.
+
+    </p>
+
+
+    <div class="projects" id="projects-container">
+
+        <div class="project-card">
+
+            <h3>
+                <i class="fab fa-github"></i>
+                Mes projets GitHub
+            </h3>
+
+            <p>
+                Consultez mon profil GitHub pour découvrir
+                mes projets Full Stack, Machine Learning,
+                applications web et mobiles.
+            </p>
+
+            <div class="lang-badges">
+
+                <span class="lang-badge">PHP</span>
+                <span class="lang-badge">Python</span>
+                <span class="lang-badge">JavaScript</span>
+                <span class="lang-badge">Django</span>
+                <span class="lang-badge">React Native</span>
+
+            </div>
+
+            <a
+                href="https://github.com/adonis123"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                Voir mon GitHub →
+                
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section id="contact">
+
+    <h2>
+
+        <i class="fas fa-paper-plane"></i>
+
+        <span
+            data-fr="Contactez-moi"
+            data-en="Get in touch">
+
+            Contactez-moi
+
+        </span>
+
+    </h2>
+
+
+    <div class="contact-form">
+
+        <h3
+            style="margin-bottom:1rem;"
+            data-fr="Envoyez-moi un message"
+            data-en="Send me a message">
+
+            Envoyez-moi un message
+
+        </h3>
+
+
+        <!--
+            IMPORTANT :
+            Formspree doit être configuré pour recevoir
+            les messages sur patrickmunezero12@gmail.com.
+        -->
+
+        <form
+            id="contactForm"
+            action="https://formspree.io/f/mldrgnvq"
+            method="POST">
+
+
+            <input
+                type="hidden"
+                name="_subject"
+                value="Nouveau message depuis le portfolio de MUNEZERO Patrick Adonis">
+
+
+            <input
+                type="hidden"
+                name="_to"
+                value="patrickmunezero12@gmail.com">
+
+
+            <div class="form-group">
+
+                <label
+                    for="name"
+                    data-fr="Nom complet"
+                    data-en="Full name">
+
+                    Nom complet
+
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    placeholder="Votre nom">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label
+                    for="email"
+                    data-fr="Adresse email"
+                    data-en="Email address">
+
+                    Adresse email
+
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    placeholder="exemple@domaine.com">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label
+                    for="message"
+                    data-fr="Votre message"
+                    data-en="Your message">
+
+                    Votre message
+
+                </label>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    required
+                    placeholder="Bonjour Patrick, je souhaite vous contacter..."></textarea>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="btn-submit"
+                data-fr="Envoyer le message"
+                data-en="Send message">
+
+                Envoyer le message
+
+            </button>
+
+
+            <div
+                id="formStatus"
+                class="form-message">
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <div class="social-links-header">
+
+        <a
+            href="https://github.com/adonis123"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-icon"
+            aria-label="GitHub">
+
+            <i class="fab fa-github"></i>
+
+        </a>
+
+
+        <a
+            href="https://wa.me/25777853044"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-icon"
+            aria-label="WhatsApp">
+
+            <i class="fab fa-whatsapp"></i>
+
+        </a>
+
+
+        <a
+            href="mailto:patrickmunezero12@gmail.com"
+            class="social-icon"
+            aria-label="Email">
+
+            <i class="fas fa-envelope"></i>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+
+        © 2026 MUNEZERO Patrick Adonis
+
+        —
+
+        <span
+            data-fr="Développeur Full Stack · Design moderne · Applications performantes"
+            data-en="Full Stack Developer · Modern Design · High-Performance Applications">
+
+            Développeur Full Stack · Design moderne · Applications performantes
+
+        </span>
+
+    </p>
+
+</footer>
+
+
+<!-- BACK TO TOP -->
+
+<div id="back2top" aria-label="Retour en haut">
+
+    <i class="fas fa-chevron-up"></i>
+
+</div>
+
+
+<script>
+
+    /* =========================
+       DARK MODE
+    ========================= */
+
+    const themeToggle =
+        document.getElementById("theme-toggle");
+
+    const body =
+        document.body;
+
+
+    if (localStorage.getItem("theme") === "dark") {
+
+        body.classList.add("dark");
+
+        themeToggle.innerHTML =
+            '<i class="fas fa-sun"></i>';
+
+    }
+
+
+    themeToggle.addEventListener("click", () => {
+
+        body.classList.toggle("dark");
+
+        if (body.classList.contains("dark")) {
+
+            localStorage.setItem("theme", "dark");
+
+            themeToggle.innerHTML =
+                '<i class="fas fa-sun"></i>';
+
+        } else {
+
+            localStorage.setItem("theme", "light");
+
+            themeToggle.innerHTML =
+                '<i class="fas fa-moon"></i>';
+
+        }
+
+    });
+
+
+    /* =========================
+       LANGUAGE
+    ========================= */
+
+    let currentLang =
+        localStorage.getItem("lang") || "fr";
+
+
+    const langBtn =
+        document.getElementById("lang-toggle-btn");
+
+
+    function updateLanguageUI() {
+
+        document
+            .querySelectorAll("[data-fr][data-en]")
+            .forEach(element => {
+
+                element.textContent =
+                    currentLang === "fr"
+                        ? element.dataset.fr
+                        : element.dataset.en;
+
+            });
+
+
+        langBtn.textContent =
+            currentLang === "fr"
+                ? "EN"
+                : "FR";
+
+
+        document.documentElement.lang =
+            currentLang;
+
+    }
+
+
+    langBtn.addEventListener("click", () => {
+
+        currentLang =
+            currentLang === "fr"
+                ? "en"
+                : "fr";
+
+        localStorage.setItem(
+            "lang",
+            currentLang
+        );
+
+        updateLanguageUI();
+
+    });
+
+
+    updateLanguageUI();
+
+
+    /* =========================
+       SKILLS ANIMATION
+    ========================= */
+
+    const skillBars =
+        document.querySelectorAll(".bar span");
+
+
+    const skillsSection =
+        document.getElementById("skills");
+
+
+    const observerSkill =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        skillBars.forEach(bar => {
+
+                            bar.style.width =
+                                bar.dataset.width;
+
+                        });
+
+                        observerSkill.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: .25
+            }
+        );
+
+
+    observerSkill.observe(skillsSection);
+
+
+    /* =========================
+       CONTACT FORM
+    ========================= */
+
+    const form =
+        document.getElementById("contactForm");
+
+
+    const formStatus =
+        document.getElementById("formStatus");
+
+
+    form.addEventListener(
+        "submit",
+        async event => {
+
+            event.preventDefault();
+
+
+            const submitButton =
+                form.querySelector(
+                    ".btn-submit"
+                );
+
+
+            const originalText =
+                submitButton.textContent;
+
+
+            submitButton.disabled = true;
+
+            submitButton.textContent =
+                currentLang === "fr"
+                    ? "Envoi en cours..."
+                    : "Sending...";
+
+
+            const formData =
+                new FormData(form);
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        form.action,
+                        {
+                            method: "POST",
+
+                            body: formData,
+
+                            headers: {
+                                "Accept":
+                                    "application/json"
+                            }
+                        }
+                    );
+
+
+                if (response.ok) {
+
+                    formStatus.textContent =
+                        currentLang === "fr"
+                            ? "✅ Message envoyé avec succès ! Patrick recevra votre message par email."
+                            : "✅ Message sent successfully! Patrick will receive your message by email.";
+
+                    formStatus.style.color =
+                        "green";
+
+
+                    form.reset();
+
+                } else {
+
+                    throw new Error(
+                        "Form submission failed"
+                    );
+
+                }
+
+            } catch (error) {
+
+                formStatus.textContent =
+                    currentLang === "fr"
+                        ? "❌ Impossible d'envoyer le message. Vérifiez la configuration Formspree."
+                        : "❌ Unable to send the message. Check the Formspree configuration.";
+
+                formStatus.style.color =
+                    "red";
+
+            }
+
+
+            submitButton.disabled = false;
+
+            submitButton.textContent =
+                originalText;
+
+
+            setTimeout(() => {
+
+                formStatus.textContent = "";
+
+            }, 6000);
+
+        }
+    );
+
+
+    /* =========================
+       BACK TO TOP
+    ========================= */
+
+    const backBtn =
+        document.getElementById("back2top");
+
+
+    window.addEventListener(
+        "scroll",
+        () => {
+
+            if (window.scrollY > 400) {
+
+                backBtn.classList.add("show");
+
+            } else {
+
+                backBtn.classList.remove("show");
+
+            }
+
+        }
+    );
+
+
+    backBtn.addEventListener(
+        "click",
+        () => {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+    );
+
+</script>
+
+</body>
+</html>
